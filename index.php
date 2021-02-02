@@ -1,5 +1,5 @@
 <?php 
-include __DIR__ . '/db.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -14,28 +14,27 @@ include __DIR__ . '/db.php';
 
     <header id="site_header">
         <nav id="navbar">
-            
+
         </nav>
         <!-- /#navbar -->
     </header>
     <!-- /#site_header -->
 
     <div id="root">
-            
-        <?php foreach ($response as $value) {?>
-            <div class="card">
-                <img src="<?php echo $value['poster'] ?>" alt="">
-                <h2><?php echo $value['title'] ?></h2>
-                <h4><?php echo $value['author'] ?></h4>
-                <h6><?php echo $value['year'] ?></h6>
+    
+            <div class="card" v-for = "album in albums">
+                <img :src="album.poster" alt="">
+                <h2>{{album.title}}</h2>
+                <h4>{{album.author}}</h4>
+                <h6>{{album.year}}</h6>
             </div>
-        <?php } ?>
     
     </div>
     <!-- /#root -->
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
     <script src="./dist/js/main.js"></script>
 </body>
 </html>
-<!-- Stampiamo i dischi solo con l’utilizzo di PHP, che stampa direttamente i dischi in pagina: al caricamento della pagina ci saranno tutti i dischi. -->
+<!-- Attraverso l’utilizzo di AJAX: al caricamento della pagina ajax chiederà attraverso una chiamata i dischi a php e li stamperà attraverso VueJS. -->

@@ -9,9 +9,17 @@
 
 var app = new Vue({
   el: '#root',
-  data: {},
+  data: {
+    albums: []
+  },
   methods: {},
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('./db.php').then(function (response) {
+      _this.albums = response.data;
+    });
+  }
 });
 
 /***/ }),
