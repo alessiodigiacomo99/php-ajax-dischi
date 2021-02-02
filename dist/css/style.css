@@ -8,20 +8,19 @@ body {
   background-color: #191919;
 }
 
-header #navbar {
+#root header nav {
   width: 100%;
   height: 50px;
   background-color: black;
 }
-
-#root {
+#root .card_wrapper {
   display: flex;
   flex-wrap: wrap;
   width: 60%;
   margin: auto;
   justify-content: space-between;
 }
-#root .card {
+#root .card_wrapper .card {
   flex-basis: calc(100% / 4);
   background-color: black;
   color: white;
@@ -33,11 +32,11 @@ header #navbar {
   text-align: center;
   cursor: pointer;
 }
-#root .card img {
+#root .card_wrapper .card img {
   width: 80%;
   margin: 10px 0;
 }
-#root .card h4, #root .card h6 {
+#root .card_wrapper .card h4, #root .card_wrapper .card h6 {
   color: #191919;
   margin: 5px 0;
 }

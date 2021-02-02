@@ -10,7 +10,9 @@
 var app = new Vue({
   el: '#root',
   data: {
-    albums: []
+    albums: [],
+    author: 'All',
+    newAlbums: []
   },
   methods: {},
   mounted: function mounted() {
@@ -18,6 +20,21 @@ var app = new Vue({
 
     axios.get('./db.php').then(function (response) {
       _this.albums = response.data;
+    });
+  },
+  beforeUpdate: function beforeUpdate() {
+    var _this2 = this;
+
+    axios.get('./db.php').then(function (response) {
+      _this2.newAlbums.splice(0);
+
+      response.data.forEach(function (album) {
+        if (album.author === _this2.author) {
+          _this2.newAlbums.push(album);
+        } else if (_this2.author === 'All') {
+          _this2.newAlbums.push(album);
+        }
+      });
     });
   }
 });

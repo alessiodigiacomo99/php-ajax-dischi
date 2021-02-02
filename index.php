@@ -12,22 +12,31 @@
 </head>
 <body>
 
-    <header id="site_header">
-        <nav id="navbar">
-
-        </nav>
-        <!-- /#navbar -->
-    </header>
-    <!-- /#site_header -->
 
     <div id="root">
+
+        <header id="site_header">
+            <nav id="navbar">
+                <select name="" id="" v-model="author">
+                    <option value="All">All</option>
+                    <option v-for="album in albums" :value="album.author">
+                        {{album.author}}
+                    </option>
+                </select>
+            </nav>
+            <!-- /#navbar -->
+        </header>
+        <!-- /#site_header -->
     
-            <div class="card" v-for = "album in albums">
+        <div class="card_wrapper">
+            <div class="card" v-for = "album in newAlbums">
                 <img :src="album.poster" alt="">
                 <h2>{{album.title}}</h2>
                 <h4>{{album.author}}</h4>
                 <h6>{{album.year}}</h6>
             </div>
+        </div>
+        <!-- /.card_wrapper -->
     
     </div>
     <!-- /#root -->
@@ -37,4 +46,4 @@
     <script src="./dist/js/main.js"></script>
 </body>
 </html>
-<!-- Attraverso l’utilizzo di AJAX: al caricamento della pagina ajax chiederà attraverso una chiamata i dischi a php e li stamperà attraverso VueJS. -->
+<!-- Attraverso un’altra chiamata ajax, filtrare gli album per artista -->
