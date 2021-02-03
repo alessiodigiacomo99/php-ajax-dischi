@@ -9,13 +9,13 @@ let app = new Vue({
 
     },
     mounted(){
-        axios.get('./db.php')
+        axios.get('../db.php')
         .then(response => {
             this.albums = response.data;
         })
     },
     beforeUpdate(){
-        axios.get('./db.php')
+        axios.get('../db.php')
         .then(response => {
             this.newAlbums.splice(0);
             response.data.forEach(album => {
